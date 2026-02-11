@@ -7,9 +7,9 @@ import os
 # Create static/ics directory if not exists
 os.makedirs('static/ics', exist_ok=True)
 
-def generate_weather_calendar(city='Beijing', days=7):
+def generate_weather_calendar(city='Ningbo', days=7):
     # Use open-meteo API (free, no key)
-    url = f"https://api.open-meteo.com/v2/forecast?latitude=39.9042&longitude=116.4074&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Asia/Shanghai&forecast_days={days}"
+    url = f"https://api.open-meteo.com/v1/forecast?latitude=29.8683&longitude=121.5440&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Asia/Shanghai&forecast_days={days}"
     response = requests.get(url)
     data = response.json()
     

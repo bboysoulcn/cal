@@ -12,6 +12,9 @@ def generate_weather_calendar(city='Ningbo', days=7):
     url = f"https://api.open-meteo.com/v1/forecast?latitude=29.8683&longitude=121.5440&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Asia/Shanghai&forecast_days={days}"
     response = requests.get(url)
     data = response.json()
+    if 'daily' not in data:
+        print("API response:", data)
+        raise ValueError("Daily data not found in API response")
     
     cal = Calendar()
     cal.add('prodid', '-//Weather Calendar//')

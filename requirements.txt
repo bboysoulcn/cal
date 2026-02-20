@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+icalendar
+requests
+jinja2

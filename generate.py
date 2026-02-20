@@ -191,6 +191,171 @@ def generate_lunar_festivals():
         f.write(cal.to_ical())
     print("Generated lunar festivals calendar")
 
+def generate_solar_terms():
+    """生成24节气日历（2026年）"""
+    solar_terms = [
+        {'date': '2026-01-05', 'name': '🌨️ 小寒', 'desc': '天气渐寒，开始进入一年中最冷的时段'},
+        {'date': '2026-01-20', 'name': '❄️ 大寒', 'desc': '一年中最冷的时期'},
+        {'date': '2026-02-04', 'name': '🌱 立春', 'desc': '春季的开始，万物复苏'},
+        {'date': '2026-02-19', 'name': '🌧️ 雨水', 'desc': '降雨开始，雨量渐增'},
+        {'date': '2026-03-05', 'name': '⚡ 惊蛰', 'desc': '春雷始鸣，蛰虫惊醒'},
+        {'date': '2026-03-20', 'name': '⚖️ 春分', 'desc': '昼夜平分，春季过半'},
+        {'date': '2026-04-04', 'name': '🌸 清明', 'desc': '天气清明，踏青扫墓'},
+        {'date': '2026-04-20', 'name': '🌾 谷雨', 'desc': '雨生百谷，播种时节'},
+        {'date': '2026-05-05', 'name': '☀️ 立夏', 'desc': '夏季开始，气温升高'},
+        {'date': '2026-05-21', 'name': '🌿 小满', 'desc': '麦类作物开始饱满'},
+        {'date': '2026-06-05', 'name': '🌾 芒种', 'desc': '麦类收获，稻类播种'},
+        {'date': '2026-06-21', 'name': '🌞 夏至', 'desc': '白昼最长，夏季过半'},
+        {'date': '2026-07-07', 'name': '🌡️ 小暑', 'desc': '天气炎热，但不到极点'},
+        {'date': '2026-07-22', 'name': '🔥 大暑', 'desc': '一年中最热的时期'},
+        {'date': '2026-08-07', 'name': '🍂 立秋', 'desc': '秋季开始，暑去凉来'},
+        {'date': '2026-08-23', 'name': '🌾 处暑', 'desc': '暑气渐消，秋意渐浓'},
+        {'date': '2026-09-07', 'name': '🌫️ 白露', 'desc': '天气转凉，露水增多'},
+        {'date': '2026-09-23', 'name': '⚖️ 秋分', 'desc': '昼夜平分，秋季过半'},
+        {'date': '2026-10-08', 'name': '🍁 寒露', 'desc': '露水寒冷，将要结冰'},
+        {'date': '2026-10-23', 'name': '❄️ 霜降', 'desc': '天气渐冷，开始降霜'},
+        {'date': '2026-11-07', 'name': '🍃 立冬', 'desc': '冬季开始，万物收藏'},
+        {'date': '2026-11-22', 'name': '🌨️ 小雪', 'desc': '开始降雪，但雪量不大'},
+        {'date': '2026-12-07', 'name': '❄️ 大雪', 'desc': '降雪量增多，地面积雪'},
+        {'date': '2026-12-21', 'name': '🌙 冬至', 'desc': '白昼最短，冬季过半'},
+    ]
+    
+    cal = Calendar()
+    cal.add('prodid', '-//24节气//')
+    cal.add('version', '2.0')
+    
+    for term in solar_terms:
+        event = Event()
+        event.add('summary', term['name'])
+        date_obj = datetime.fromisoformat(term['date']).date()
+        event.add('dtstart', date_obj)
+        event.add('dtend', date_obj + timedelta(days=1))
+        event.add('description', term['desc'])
+        cal.add_component(event)
+    
+    with open('static/ics/solar_terms.ics', 'wb') as f:
+        f.write(cal.to_ical())
+    print("Generated solar terms calendar")
+
+def generate_international_holidays():
+    """生成国际节日日历"""
+    holidays = [
+        {'date': '2026-01-01', 'name': '🎆 元旦', 'desc': 'New Year\'s Day'},
+        {'date': '2026-02-14', 'name': '💝 情人节', 'desc': 'Valentine\'s Day'},
+        {'date': '2026-03-08', 'name': '👩 国际妇女节', 'desc': 'International Women\'s Day'},
+        {'date': '2026-04-01', 'name': '😄 愚人节', 'desc': 'April Fools\' Day'},
+        {'date': '2026-04-05', 'name': '🌍 世界卫生日', 'desc': 'World Health Day'},
+        {'date': '2026-04-22', 'name': '🌎 世界地球日', 'desc': 'Earth Day'},
+        {'date': '2026-05-01', 'name': '⚒️ 国际劳动节', 'desc': 'International Workers\' Day'},
+        {'date': '2026-05-10', 'name': '💐 母亲节', 'desc': 'Mother\'s Day (5月第2个周日)'},
+        {'date': '2026-06-01', 'name': '👶 国际儿童节', 'desc': 'International Children\'s Day'},
+        {'date': '2026-06-21', 'name': '👨 父亲节', 'desc': 'Father\'s Day (6月第3个周日)'},
+        {'date': '2026-07-11', 'name': '🌍 世界人口日', 'desc': 'World Population Day'},
+        {'date': '2026-08-08', 'name': '🐱 国际猫咪日', 'desc': 'International Cat Day'},
+        {'date': '2026-09-10', 'name': '👨‍🏫 教师节', 'desc': 'Teachers\' Day (中国)'},
+        {'date': '2026-09-21', 'name': '☮️ 国际和平日', 'desc': 'International Day of Peace'},
+        {'date': '2026-10-01', 'name': '👴 国际老年人日', 'desc': 'International Day of Older Persons'},
+        {'date': '2026-10-24', 'name': '🌍 联合国日', 'desc': 'United Nations Day'},
+        {'date': '2026-10-31', 'name': '🎃 万圣节', 'desc': 'Halloween'},
+        {'date': '2026-11-26', 'name': '🦃 感恩节', 'desc': 'Thanksgiving Day (11月第4个周四)'},
+        {'date': '2026-12-24', 'name': '🎄 平安夜', 'desc': 'Christmas Eve'},
+        {'date': '2026-12-25', 'name': '🎅 圣诞节', 'desc': 'Christmas Day'},
+    ]
+    
+    cal = Calendar()
+    cal.add('prodid', '-//国际节日//')
+    cal.add('version', '2.0')
+    
+    for holiday in holidays:
+        event = Event()
+        event.add('summary', holiday['name'])
+        date_obj = datetime.fromisoformat(holiday['date']).date()
+        event.add('dtstart', date_obj)
+        event.add('dtend', date_obj + timedelta(days=1))
+        event.add('description', holiday['desc'])
+        cal.add_component(event)
+    
+    with open('static/ics/international_holidays.ics', 'wb') as f:
+        f.write(cal.to_ical())
+    print("Generated international holidays calendar")
+
+def generate_health_reminders():
+    """生成健康提醒日历"""
+    cal = Calendar()
+    cal.add('prodid', '-//健康提醒//')
+    cal.add('version', '2.0')
+    
+    # 每周健康提醒
+    health_tips = [
+        {'day': 0, 'name': '💧 多喝水提醒', 'desc': '每天喝8杯水，保持身体水分'},
+        {'day': 1, 'name': '🏃 运动日', 'desc': '坚持运动30分钟，保持健康体魄'},
+        {'day': 2, 'name': '🥗 健康饮食', 'desc': '多吃蔬菜水果，少油少盐'},
+        {'day': 3, 'name': '😊 保持好心情', 'desc': '心理健康同样重要，保持乐观心态'},
+        {'day': 4, 'name': '👀 护眼提醒', 'desc': '远离电子屏幕，保护眼睛'},
+        {'day': 5, 'name': '🧘 放松休息', 'desc': '适当放松，劳逸结合'},
+        {'day': 6, 'name': '😴 早睡早起', 'desc': '保证充足睡眠，晚上11点前入睡'},
+    ]
+    
+    # Generate for next 12 weeks
+    today = datetime.now().date()
+    for week in range(12):
+        for tip in health_tips:
+            days_ahead = tip['day'] - today.weekday()
+            if days_ahead <= 0:
+                days_ahead += 7
+            target_date = today + timedelta(days=days_ahead + week * 7)
+            
+            event = Event()
+            event.add('summary', tip['name'])
+            event.add('dtstart', target_date)
+            event.add('dtend', target_date + timedelta(days=1))
+            event.add('description', tip['desc'])
+            cal.add_component(event)
+    
+    with open('static/ics/health_reminders.ics', 'wb') as f:
+        f.write(cal.to_ical())
+    print("Generated health reminders calendar")
+
+def generate_financial_calendar():
+    """生成财经日历"""
+    # 2026年重要财经日期
+    financial_events = [
+        {'date': '2026-01-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-02-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-03-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-03-15', 'name': '📊 个税申报截止', 'desc': '年度个人所得税汇算清缴'},
+        {'date': '2026-04-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-05-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-06-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-06-30', 'name': '💼 半年总结', 'desc': '上半年财务回顾与规划'},
+        {'date': '2026-07-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-08-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-09-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-10-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-11-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-11-11', 'name': '🛒 双十一购物节', 'desc': '理性消费，避免冲动购物'},
+        {'date': '2026-12-10', 'name': '💰 发薪日提醒', 'desc': '本月工资发放日（具体以公司为准）'},
+        {'date': '2026-12-12', 'name': '🛒 双十二购物节', 'desc': '理性消费，避免冲动购物'},
+        {'date': '2026-12-31', 'name': '📈 年度总结', 'desc': '年度财务回顾与下年规划'},
+    ]
+    
+    cal = Calendar()
+    cal.add('prodid', '-//财经日历//')
+    cal.add('version', '2.0')
+    
+    for event_data in financial_events:
+        event = Event()
+        event.add('summary', event_data['name'])
+        date_obj = datetime.fromisoformat(event_data['date']).date()
+        event.add('dtstart', date_obj)
+        event.add('dtend', date_obj + timedelta(days=1))
+        event.add('description', event_data['desc'])
+        cal.add_component(event)
+    
+    with open('static/ics/financial_calendar.ics', 'wb') as f:
+        f.write(cal.to_ical())
+    print("Generated financial calendar")
+
 if __name__ == '__main__':
     # Generate weather for multiple cities
     for city in ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Hangzhou', 'Ningbo', 'Chengdu', 'Wuhan']:
@@ -204,5 +369,9 @@ if __name__ == '__main__':
     generate_countdown_calendar()
     generate_weekly_reminder()
     generate_lunar_festivals()
+    generate_solar_terms()
+    generate_international_holidays()
+    generate_health_reminders()
+    generate_financial_calendar()
     
     print("\n✅ All ICS files generated successfully!")

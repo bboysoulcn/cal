@@ -3,9 +3,25 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+  schedule:
+    # 每天北京时间0点执行 (UTC 16:00前一天)
+    - cron: '0 16 * * *'
 
 jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Gitleaks scan
+      uses: gitleaks/gitleaks-action@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+
   build-and-deploy:
+    needs: security-scan
     runs-on: ubuntu-latest
     permissions:
       contents: write

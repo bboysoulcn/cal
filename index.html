@@ -14,304 +14,275 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #FAF9DE;
-            color: #333;
+            background-color: #faf9de;
+            color: #151513;
             line-height: 1.6;
-            padding: 20px;
+        }
+
+        hr {
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            height: 3px;
+            border: none;
+            border-radius: 1px;
+            background-size: 200% 100%;
+            animation: animate-hr 10s linear infinite;
+        }
+
+        @keyframes animate-hr {
+            0%   { background-position: 100% 0; }
+            100% { background-position: 0 0; }
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        .container-head,
+        .container-contact,
+        .app-footer {
+            width: 75%;
         }
 
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
-        .content {
-            padding: 40px 30px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #151513;
-            border-bottom: 2px solid #ff8e2d;
-            padding-bottom: 10px;
-        }
-
-        .calendar-list {
-            list-style: none;
-        }
-
-        .calendar-item {
-            background: #f8f9fa;
-            border-left: 4px solid #ff8e2d;
-            padding: 20px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .calendar-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 4px 12px rgba(255, 142, 45, 0.2);
-        }
-
-        .calendar-item a {
-            text-decoration: none;
-            color: #151513;
+        .head-box {
             display: flex;
             align-items: center;
-            font-size: 1.1em;
-            font-weight: 500;
+            padding: 16px 0;
         }
 
-        .calendar-item i {
-            color: #ff8e2d;
+        .page-title {
             font-size: 1.5em;
-            margin-right: 15px;
-            width: 30px;
-            text-align: center;
+            color: #151513;
         }
 
-        .calendar-item .description {
-            color: #666;
-            font-size: 0.9em;
-            margin-top: 8px;
-            margin-left: 45px;
-        }
-
-        .usage-guide {
-            background: #e8f5e9;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #4caf50;
-        }
-
-        .usage-guide h3 {
-            color: #2e7d32;
-            margin-bottom: 15px;
-        }
-
-        .usage-guide ol {
-            margin-left: 20px;
-        }
-
-        .usage-guide li {
-            margin-bottom: 10px;
-            color: #555;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #f8f9fa;
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        .footer a {
+        .page-title i {
             color: #ff8e2d;
-            text-decoration: none;
+            margin-right: 8px;
         }
 
-        .footer a:hover {
+        .container-contact section {
+            padding: 24px 0;
+        }
+
+        .section-heading {
+            font-size: 1.2em;
+            color: #151513;
+            margin-bottom: 16px;
+        }
+
+        .section-heading i {
+            color: #ff8e2d;
+            margin-right: 8px;
+        }
+
+        .postitem {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .postitem a {
+            text-decoration: none;
+            font-size: 18px;
+            color: red;
+        }
+
+        .postitem a:visited {
+            color: #ff8e2d;
+        }
+
+        .postitem a:hover {
+            color: #ff8e2d;
             text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.5em;
+        .postitem a i {
+            color: #ff8e2d;
+            margin-right: 8px;
+        }
+
+        .postitem .desc {
+            font-size: 14px;
+            color: #888;
+            white-space: nowrap;
+            margin-left: 12px;
+        }
+
+        .usage-ol {
+            padding-left: 1.5em;
+            color: #555;
+        }
+
+        .usage-ol li {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .app-footer {
+            text-align: center;
+            padding: 20px 0 32px;
+            color: #666;
+            font-size: 0.9em;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .app-footer a {
+            color: #ff8e2d;
+            text-decoration: none;
+        }
+
+        .app-footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1080px) {
+            .container-head,
+            .container-contact,
+            .app-footer {
+                width: 100%;
+                padding-left: 16px;
+                padding-right: 16px;
             }
-            
-            .content {
-                padding: 30px 20px;
+        }
+
+        @media (max-width: 500px) {
+            .postitem {
+                display: block;
+            }
+            .postitem .desc {
+                display: block;
+                margin-left: 0;
+                margin-top: 2px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1><i class="fas fa-calendar-alt"></i> 日历订阅服务</h1>
-            <p>Calendar Subscription Service</p>
+
+        <!-- Header -->
+        <div class="container-head">
+            <div class="head-box">
+                <h1 class="page-title">
+                    <i class="fas fa-calendar-alt"></i> 日历订阅服务
+                </h1>
+            </div>
+            <hr>
         </div>
 
-        <div class="content">
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-cloud-sun"></i> 天气预报订阅</h2>
-                <ul class="calendar-list">
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Beijing.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>北京天气</span>
-                        </a>
-                        <div class="description">北京未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Shanghai.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>上海天气</span>
-                        </a>
-                        <div class="description">上海未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Guangzhou.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>广州天气</span>
-                        </a>
-                        <div class="description">广州未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Shenzhen.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>深圳天气</span>
-                        </a>
-                        <div class="description">深圳未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Hangzhou.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>杭州天气</span>
-                        </a>
-                        <div class="description">杭州未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Ningbo.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>宁波天气</span>
-                        </a>
-                        <div class="description">宁波未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Chengdu.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>成都天气</span>
-                        </a>
-                        <div class="description">成都未来7天天气预报</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weather_Wuhan.ics">
-                            <i class="fas fa-cloud-sun"></i>
-                            <span>武汉天气</span>
-                        </a>
-                        <div class="description">武汉未来7天天气预报</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-calendar-check"></i> 节假日订阅</h2>
-                <ul class="calendar-list">
-                    <li class="calendar-item">
-                        <a href="static/ics/holidays.ics">
-                            <i class="fas fa-gift"></i>
-                            <span>中国法定节假日</span>
-                        </a>
-                        <div class="description">2026年中国法定节假日，包含春节、国庆等</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/lunar_festivals.ics">
-                            <i class="fas fa-moon"></i>
-                            <span>中国传统节日</span>
-                        </a>
-                        <div class="description">农历传统节日，包含春节、端午、中秋、七夕等</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/solar_terms.ics">
-                            <i class="fas fa-leaf"></i>
-                            <span>24节气</span>
-                        </a>
-                        <div class="description">中国传统24节气，立春、春分、夏至、秋分、冬至等</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/international_holidays.ics">
-                            <i class="fas fa-globe"></i>
-                            <span>国际节日</span>
-                        </a>
-                        <div class="description">国际通用节日，情人节、万圣节、圣诞节等</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <h2 class="section-title"><i class="fas fa-hourglass-half"></i> 特殊提醒</h2>
-                <ul class="calendar-list">
-                    <li class="calendar-item">
-                        <a href="static/ics/countdown.ics">
-                            <i class="fas fa-clock"></i>
-                            <span>重要日期倒计时</span>
-                        </a>
-                        <div class="description">高考、考研、情人节等重要日期倒计时提醒</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/weekly_reminder.ics">
-                            <i class="fas fa-bell"></i>
-                            <span>每周提醒</span>
-                        </a>
-                        <div class="description">周一工作提醒、周五快乐、周日休息等定期提醒</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/health_reminders.ics">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>健康提醒</span>
-                        </a>
-                        <div class="description">多喝水、运动、护眼、早睡等每日健康提醒</div>
-                    </li>
-                    <li class="calendar-item">
-                        <a href="static/ics/financial_calendar.ics">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>财经日历</span>
-                        </a>
-                        <div class="description">发薪日、个税申报、购物节等财务相关提醒</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="section">
-                <div class="usage-guide">
-                    <h3><i class="fas fa-question-circle"></i> 使用方法</h3>
-                    <ol>
-                        <li>点击上方链接下载 <strong>.ics</strong> 文件</li>
-                        <li>使用日历应用打开文件（Google Calendar、Apple Calendar、Outlook 等）</li>
-                        <li>选择"添加日历"或"导入"选项</li>
-                        <li>完成！日历会自动同步更新</li>
-                    </ol>
+        <!-- 天气预报 -->
+        <div class="container-contact">
+            <section>
+                <h2 class="section-heading"><i class="fas fa-cloud-sun"></i> 天气预报订阅</h2>
+                <div class="postitem">
+                    <a href="static/ics/weather_Beijing.ics"><i class="fas fa-cloud-sun fa-shake"></i> 北京天气</a>
+                    <span class="desc">北京未来7天天气预报</span>
                 </div>
-            </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Shanghai.ics"><i class="fas fa-cloud-sun fa-shake"></i> 上海天气</a>
+                    <span class="desc">上海未来7天天气预报</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Guangzhou.ics"><i class="fas fa-cloud-sun fa-shake"></i> 广州天气</a>
+                    <span class="desc">广州未来7天天气预报</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Shenzhen.ics"><i class="fas fa-cloud-sun fa-shake"></i> 深圳天气</a>
+                    <span class="desc">深圳未来7天天气预报</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Hangzhou.ics"><i class="fas fa-cloud-sun fa-shake"></i> 杭州天气</a>
+                    <span class="desc">杭州未来7天天气预报</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Ningbo.ics"><i class="fas fa-cloud-sun fa-shake"></i> 宁波天气</a>
+                    <span class="desc">宁波未来7天天气预报</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Chengdu.ics"><i class="fas fa-cloud-sun fa-shake"></i> 成都天气</a>
+                    <span class="desc">成都未来7天天气预报</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weather_Wuhan.ics"><i class="fas fa-cloud-sun fa-shake"></i> 武汉天气</a>
+                    <span class="desc">武汉未来7天天气预报</span>
+                </div>
+                <hr>
+            </section>
         </div>
 
-        <div class="footer">
-            <p>Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> by <a href="https://www.bboy.app" target="_blank">Bboysoul</a></p>
-            <p style="margin-top: 8px;">
-                <a href="https://github.com/bboysoulcn/cal" target="_blank">
-                    <i class="fab fa-github"></i> View on GitHub
-                </a>
-            </p>
+        <!-- 节假日 -->
+        <div class="container-contact">
+            <section>
+                <h2 class="section-heading"><i class="fas fa-calendar-check"></i> 节假日订阅</h2>
+                <div class="postitem">
+                    <a href="static/ics/holidays.ics"><i class="fas fa-gift fa-shake"></i> 中国法定节假日</a>
+                    <span class="desc">2026年春节、国庆等法定假期</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/lunar_festivals.ics"><i class="fas fa-moon fa-shake"></i> 中国传统节日</a>
+                    <span class="desc">春节、端午、中秋、七夕等农历节日</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/solar_terms.ics"><i class="fas fa-leaf fa-shake"></i> 24节气</a>
+                    <span class="desc">立春、春分、夏至、秋分、冬至等</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/international_holidays.ics"><i class="fas fa-globe fa-shake"></i> 国际节日</a>
+                    <span class="desc">情人节、万圣节、圣诞节等</span>
+                </div>
+                <hr>
+            </section>
         </div>
+
+        <!-- 特殊提醒 -->
+        <div class="container-contact">
+            <section>
+                <h2 class="section-heading"><i class="fas fa-hourglass-half"></i> 特殊提醒</h2>
+                <div class="postitem">
+                    <a href="static/ics/countdown.ics"><i class="fas fa-clock fa-shake"></i> 重要日期倒计时</a>
+                    <span class="desc">高考、考研等重要日期提醒</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/weekly_reminder.ics"><i class="fas fa-bell fa-shake"></i> 每周提醒</a>
+                    <span class="desc">周一工作提醒、周五快乐等</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/health_reminders.ics"><i class="fas fa-heartbeat fa-shake"></i> 健康提醒</a>
+                    <span class="desc">多喝水、运动、护眼、早睡等</span>
+                </div>
+                <div class="postitem">
+                    <a href="static/ics/financial_calendar.ics"><i class="fas fa-dollar-sign fa-shake"></i> 财经日历</a>
+                    <span class="desc">发薪日、个税申报、购物节等</span>
+                </div>
+                <hr>
+            </section>
+        </div>
+
+        <!-- 使用方法 -->
+        <div class="container-contact">
+            <section>
+                <h2 class="section-heading"><i class="fas fa-question-circle"></i> 使用方法</h2>
+                <ol class="usage-ol">
+                    <li>点击上方链接下载 <strong>.ics</strong> 文件</li>
+                    <li>使用日历应用打开（Google Calendar、Apple Calendar、Outlook 等）</li>
+                    <li>选择「添加日历」或「导入」</li>
+                    <li>完成！日历每天自动同步更新</li>
+                </ol>
+                <hr>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <span>© 2026</span>
+            <span>Made with <i class="fas fa-heart" style="color: #e74c3c;"></i> by <a href="https://www.bboy.app" target="_blank">Bboysoul</a></span>
+            <span><a href="https://github.com/bboysoulcn/cal" target="_blank"><i class="fab fa-github"></i> GitHub</a></span>
+        </footer>
+
     </div>
 </body>
 </html>

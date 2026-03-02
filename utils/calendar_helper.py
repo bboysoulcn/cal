@@ -21,6 +21,8 @@ class BaseCalendarGenerator:
         self.calendar = Calendar()
         self.calendar.add('prodid', f'-//{name}//')
         self.calendar.add('version', '2.0')
+        self.calendar.add('calscale', 'GREGORIAN')
+        self.calendar.add('x-wr-calname', name)
     
     def add_event(self, summary, start_date, end_date=None, description=''):
         """
@@ -43,15 +45,19 @@ class BaseCalendarGenerator:
         if isinstance(end_date, str):
             end_date = datetime.strptime(end_date, '%Y-%m-%d').date()
         
-        # Default end_date to start_date
+        # Default end_date to next day (RFC 5545: DTEND is exclusive for DATE events)
         if end_date is None:
-            end_date = start_date
+            end_date = start_date + timedelta(days=1)
         
         event.add('dtstart', start_date)
         event.add('dtend', end_date)
         
         if description:
             event.add('description', description)
+        
+        # Compatibility flags for Apple/Microsoft clients
+        event.add('x-funambol-allday', '1')
+        event.add('x-microsoft-cdo-alldayevent', 'TRUE')
         
         self.calendar.add_component(event)
     

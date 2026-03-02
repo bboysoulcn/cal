@@ -1,6 +1,7 @@
 """Calendar generation helper utilities."""
 
 import os
+import uuid
 from datetime import datetime, timedelta
 from icalendar import Calendar, Event
 from config.settings import OUTPUT_DIR, TIMEZONE
@@ -32,6 +33,8 @@ class BaseCalendarGenerator:
             description: Event description
         """
         event = Event()
+        event.add('uid', str(uuid.uuid4()))
+        event.add('dtstamp', datetime.utcnow())
         event.add('summary', summary)
         
         # Parse dates if strings
